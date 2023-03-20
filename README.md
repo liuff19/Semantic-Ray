@@ -16,3 +16,14 @@ Comming soon.
 
 ## Acknowledgement
 This repo benefits from [NeuRay](https://github.com/liuyuan-pal/NeuRay), [IBRNet](https://github.com/googleinterns/IBRNet), [Semantic-NeRF](https://github.com/Harry-Zhi/semantic_nerf), and [NeRF-pytorch](https://github.com/yenchenlin/nerf-pytorch). Thanks for their wonderful works.
+
+## Citation
+If you found this work to be useful in your own research, please consider citing the following:
+```
+@inproceedings{liu2023semantic,
+author = {Liu, Fangfu and Zhang, Chubin and Zheng, Yu and Duan, Yueqi},
+title = {Semantic Ray: Learning a Generalizable Semantic Field with Cross-Reprojection Attention},
+booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+year={2023}
+                }
+```
