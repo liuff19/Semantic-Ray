@@ -10,3 +10,9 @@ We propose a generalizable semantic field named Semantic Ray, which is able to l
 <div align="center">
   <img src="imgs/teaser.png"/>
 </div>
+
+## Code
+Comming soon.
+
+## Acknowledgement
+This repo benefits from [NeuRay](https://github.com/liuyuan-pal/NeuRay), [IBRNet](https://github.com/googleinterns/IBRNet), [Semantic-NeRF](https://github.com/Harry-Zhi/semantic_nerf), and [NeRF-pytorch](https://github.com/yenchenlin/nerf-pytorch). Thanks for their wonderful works.
