@@ -11,8 +11,68 @@ We propose a generalizable semantic field named Semantic Ray, which is able to l
   <img src="imgs/teaser.png"/>
 </div>
 
-## Code
-Comming soon.
+## Installation
+
+The code can be tested with Python3.10, PyTorch 2.0 and CUDA 11.7. We recommend you to use [anaconda](https://www.anaconda.com/) to create a new environment and install the dependencies:
+```
+conda create -n semray python=3.10
+conda activate semray
+conda install pytorch=2.0 torchvision=0.15 pytorch-cuda=11.7 -c pytorch -c nvidia
+pip install -r requirements.txt
+```
+
+## Datasets
+
+### ScanNet
+
+Download the ScanNet dataset from [here](http://www.scan-net.org/) and extract the color images, depth images, labels, poses and intrinsics of each scene. Organize the data in the following structure:
+```
+├── data
+│   ├── scannet
+│   │   ├── scene0000_00
+│   │   │   ├── color
+│   │   │   │   ├── 0.jpg
+│   │   │   │   ├── ...
+│   │   │   ├── depth
+│   │   │   │   ├── 0.png
+│   │   │   │   ├── ...
+│   │   │   ├── label-filt
+│   │   │   │   ├── 0.png
+│   │   │   │   ├── ...
+│   │   │   ├── pose
+│   │   │   │   ├── 0.txt
+│   │   │   │   ├── ...
+│   │   │   ├── intrinsic
+│   │   │   │   ├── extrinsic_color.txt
+│   │   │   │   ├── intrinsic_color.txt
+│   │   │   │   ├── ...
+│   │   │   ├── ...
+│   │   ├── ...
+│   │   ├── scannetv2-labels.combined.tsv
+```
+
+## Training
+
+(Optional) For better and faster reconstruction results, you can leverage the pretrained model of NeuRay, which can be downloaded from [here](https://github.com/liuyuan-pal/NeuRay). Put the pretrained model in `data/model`. If you want to train from scratch, you can skip this step and comment out the `load_pretrain` option in the config file.
+
+To train Semantic-Ray with ScanNet, run:
+```
+CUDA_VISIBLE_DEVICES=0 python run_training.py --config configs/cra/train_cra_scannet.txt
+```
+
+## Evaluation
+
+To evaluate the trained model, run:
+```
+CUDA_VISIBLE_DEVICES=0 python run_evaluation.py --config configs/cra/test_cra_scannet.txt
+``` 
+
+## Fine-tuning
+
+To fine-tune the trained model on a specific scene, create a new config file following the format of `configs/cra/ft_cra_scannet_scene0376.txt`. Then run:
+```
+CUDA_VISIBLE_DEVICES=0 python run_training.py --config configs/cra/ft_cra_scannet_scene0376.txt
+```
 
 ## Acknowledgement
 This repo benefits from [NeuRay](https://github.com/liuyuan-pal/NeuRay), [IBRNet](https://github.com/googleinterns/IBRNet), [Semantic-NeRF](https://github.com/Harry-Zhi/semantic_nerf), and [NeRF-pytorch](https://github.com/yenchenlin/nerf-pytorch). Thanks for their wonderful works.
@@ -29,4 +89,4 @@ If you found this work to be useful in your own research, please consider citing
 ```
 
 ## Contact
-If you have any question about this project, please feel free to contact liuff19@mails.tsinghua.edu.cn.
+If you have any question about this project, please feel free to contact liuff19@mails.tsinghua.edu.cn or zhangcb19@mails.tsinghua.edu.cn.
