@@ -50,6 +50,9 @@ Download the ScanNet dataset from [here](http://www.scan-net.org/) and extract t
 │   │   ├── ...
 │   │   ├── scannetv2-labels.combined.tsv
 ```
+### Replica
+
+- [ ] TODO
 
 ## Training
 
