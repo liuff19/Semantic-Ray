@@ -1,0 +1,92 @@
+name: ft_cra_scannet_scene0376
+
+# network
+init_net_type: depth
+use_hierarchical_sampling: true
+use_depth_loss: false
+dist_decoder_cfg:
+  use_vis: true
+fine_dist_decoder_cfg:
+  use_vis: true
+
+render_label: true
+num_classes: 20
+ignore_label: 20
+agg_net_cfg: {
+  label_hidden: [16],
+  num_classes: 20,
+  use_ptrans: true,
+  ptrans_first: false,
+  sem_only: true,
+}
+fine_agg_net_cfg: {
+  label_hidden: [16],
+  num_classes: 20,
+  use_ptrans: true,
+  ptrans_first: false,
+  sem_only: true,
+}
+
+# loss
+loss: [render, semantic]
+render_loss_scale: 0.75
+semantic_loss_scale: 0.25
+val_metric: [psnr_ssim, vis_img, iou, vis_sem]
+key_metric_name: miou
+use_dr_loss: false
+use_dr_fine_loss: false
+use_nr_fine_loss: true
+
+# lr
+load_pretrain: data/model/train_cra_scannet/model_best.pth
+total_step: 50000
+val_interval: 2000
+save_interval: 2000
+lr_type: exp_decay
+optimizer_type: adam
+max_grad_norm: 10
+lr_cfg:
+  scale_new: 1.0
+  lr_init: 1.0e-3
+  decay_step: 5000
+  decay_rate: 0.2
+  lr_min: 5.0e-5
+  optim_args: {weight_decay: 1.0e-5}
+
+# dataset
+train_dataset_cfg:
+  resolution_type: lr
+  type2sample_weights: {scannet_single: 1}
+  train_database_types: ['scannet_single']
+  aug_pixel_center_sample: true
+  train_ray_num: 2048
+val_set_list:
+  -
+    name: scene0376_02
+    type: gen
+    cfg:
+      val_database_name: scannet/scene0376_02/black_320
+
+semantic_color_map: [
+  [174, 199, 232],  # wall
+  [152, 223, 138],  # floor
+  [31, 119, 180],   # cabinet
+  [255, 187, 120],  # bed
+  [188, 189, 34],   # chair
+  [140, 86, 75],    # sofa
+  [255, 152, 150],  # table
+  [214, 39, 40],    # door
+  [197, 176, 213],  # window
+  [148, 103, 189],  # bookshelf
+  [196, 156, 148],  # picture
+  [23, 190, 207],   # counter
+  [247, 182, 210],  # desk
+  [219, 219, 141],  # curtain
+  [255, 127, 14],   # refrigerator
+  [91, 163, 138],   # shower curtain
+  [44, 160, 44],    # toilet
+  [112, 128, 144],  # sink
+  [227, 119, 194],  # bathtub
+  [82, 84, 163],    # otherfurn
+  [248, 166, 116],  # invalid
+]
