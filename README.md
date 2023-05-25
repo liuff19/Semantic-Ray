@@ -60,21 +60,21 @@ Download the ScanNet dataset from [here](http://www.scan-net.org/) and extract t
 
 To train Semantic-Ray with ScanNet, run:
 ```
-CUDA_VISIBLE_DEVICES=0 python run_training.py --config configs/cra/train_cra_scannet.txt
+CUDA_VISIBLE_DEVICES=0 python run_training.py --cfg configs/cra/train_cra_scannet.yaml
 ```
 
 ## Evaluation
 
 To evaluate the trained model, run:
 ```
-CUDA_VISIBLE_DEVICES=0 python run_evaluation.py --config configs/cra/test_cra_scannet.txt
-``` 
+CUDA_VISIBLE_DEVICES=0 python run_evaluation.py --cfg configs/cra/test_cra_scannet.yaml --model-path data/model/train_cra_scannet/model_best.pth
+```
 
 ## Fine-tuning
 
 To fine-tune the trained model on a specific scene, create a new config file following the format of `configs/cra/ft_cra_scannet_scene0376.txt`. Then run:
 ```
-CUDA_VISIBLE_DEVICES=0 python run_training.py --config configs/cra/ft_cra_scannet_scene0376.txt
+CUDA_VISIBLE_DEVICES=0 python run_training.py --cfg configs/cra/ft_cra_scannet_scene0376.yaml
 ```
 
 ## Acknowledgement
