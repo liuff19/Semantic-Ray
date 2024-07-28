@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 ### ScanNet
 
-Download the ScanNet dataset from [here](http://www.scan-net.org/) and extract the color images, depth images, labels, poses and intrinsics of each scene. Organize the data in the following structure:
+Download the ScanNet dataset from [here](http://www.scan-net.org/) and extract the color images, depth images, labels, poses, and intrinsics of each scene. Organize the data in the following structure:
 ```
 ├── data
 │   ├── scannet
@@ -51,8 +51,34 @@ Download the ScanNet dataset from [here](http://www.scan-net.org/) and extract t
 │   │   ├── scannetv2-labels.combined.tsv
 ```
 ### Replica
-
-- [ ] TODO
+Please follow the [Semantic-NeRF](https://github.com/Harry-Zhi/semantic_nerf) for Replica data preparation.
+```
+├── data
+│   ├── Replica
+│   │   ├── office_0
+│   │   │   ├── Sequence_1
+│   │   │   │   ├── depth
+│   │   │   │   │   ├── depth_0.png
+│   │   │   │   │   ├── ...
+│   │   │   │   ├── rgb
+│   │   │   │   │   ├── rgb_0.png
+│   │   │   │   │   ├── ...
+│   │   │   │   ├── semantic_class
+│   │   │   │   │   ├── semantic_class_0.png
+│   │   │   │   │   ├── ...
+│   │   │   │   ├── traj_w_c.txt
+│   │   │   ├── Sequence_2
+│   │   │   │   ├── depth
+│   │   │   │   │   ├── depth_0.png
+│   │   │   │   │   ├── ...
+│   │   │   │   ├── rgb
+│   │   │   │   │   ├── rgb_0.png
+│   │   │   │   │   ├── ...
+│   │   │   │   ├── semantic_class
+│   │   │   │   │   ├── semantic_class_0.png
+│   │   │   │   │   ├── ...
+│   │   │   │   ├── traj_w_c.txt
+```
 
 ## Training
 
